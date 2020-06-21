@@ -1,4 +1,5 @@
 from typing import List, Set
+import numpy as np
 
 def subsets(lst:List[int]) -> List[Set[int]]:
     result = []
@@ -15,4 +16,14 @@ def subsets(lst:List[int]) -> List[Set[int]]:
     inner((), lst)
     return result
 
-print(subsets([4,5,2,8,9]))
+def factorial_n(n, r):
+    if r > n:
+        raise Exception('r should be less or equal to n')
+    d = n - r
+    result = 0
+    for i in range(1, d):
+        result += n * (n - i)
+    return result
+
+def combinations(n, r):
+    return factorial_n(n,r)/np.math.factorial(r)
