@@ -27,3 +27,14 @@ def factorial_n(n, r):
 
 def combinations(n, r):
     return factorial_n(n,r)/np.math.factorial(r)
+
+def permutations(lst: List[int]) -> List[int]:
+    result = []
+    def inner(current, last):
+        if last == []:
+            result.append(current)
+            return
+        for r in last:
+            inner(current + (r,), [i for i in last if i != r])
+    inner((), lst)
+    return result
